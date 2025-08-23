@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "go": "node first/nodejs-homeworks/quiz5.js"
+    "dev": "nodemon exe1.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,11 @@
   "dependencies": {
     "colors": "^1.4.0",
     "cowsay": "^1.6.0",
+    "express": "^5.1.0",
     "moment": "^2.30.1",
     "random-words": "^2.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
