@@ -177,6 +177,11 @@ app.get("/products", (req, res) => {
   res.status(200).json(filterProducts);
 });
 
+app.use((req,res,next)=>{
+  res.status(404).json({message:"not found page"})
+})
+
+
 app.listen(port, () => {
   console.log(`runing server on PORT: ${port}`);
 });
