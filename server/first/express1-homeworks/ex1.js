@@ -54,3 +54,37 @@ const users = [
 ];
 
 //Answer
+
+import express from "express";
+
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+  res.json("this is main ruote");
+});
+
+app.get("/users", (req, res) => {
+  res.json(users);
+});
+
+app.get("/users/:id", (req, res) => {
+  const userId = Number(req.params.id);
+  console.log(userId);
+  if (userId === NaN || userId <= 0)
+    return res.json({ message: "pls type number and biger than 0" });
+
+  const find = users.find(({ id }) => id === userId);
+
+  if (!find) return res.json({ message: "❌ error 404 : user not found " });
+
+  res.json(find);
+});
+
+app.use((req, res, next) => {
+  res.send({ message: "❌ error 404 : not found page" });
+});
+
+app.listen(port, () => {
+  console.log(`runing server on PORT: ${port}`);
+});

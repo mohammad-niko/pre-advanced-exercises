@@ -141,3 +141,42 @@ const products = [
 ];
 
 // answer
+
+import express from "express";
+
+const app = express();
+const port = 4000;
+
+app.get("/products", (req, res) => {
+  const { maxPrice, limit } = req.query;
+  if (maxPrice === undefined && limit === undefined)
+    if (maxPrice) {
+      if (isNaN(Number(maxPrice)))
+        return res.status(400).json({ message: "bad request...(。﹏。*)" });
+    }
+
+  if (limit) {
+    if (isNaN(Number(limit)))
+      return res.status(400).json({ message: "bad request...(。﹏。*)" });
+  }
+
+  const norm = (n) => Number(n);
+  const keyMax = norm(maxPrice);
+  const keylim = norm(limit);
+
+  const filterProducts = products.filter(({ price }) => {
+    if (!keylim) return norm(price) <= maxPrice;
+    if (!keyMax) return norm(price) >= keylim;
+
+    return norm(price) <= keyMax && norm(price) >= keylim;
+  });
+  console.log(filterProducts);
+  if (!filterProducts || filterProducts.length === 0)
+    return res.status(404).json({ message: "not found" });
+
+  res.status(200).json(filterProducts);
+});
+
+app.listen(port, () => {
+  console.log(`runing server on PORT: ${port}`);
+});

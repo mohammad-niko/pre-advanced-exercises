@@ -154,3 +154,49 @@ const storeData = [
 ];
 
 // answer
+
+import express from "express";
+
+const app = express();
+const port = 4000;
+
+app.get("/allProducts", (req, res) => {
+  res.json(storeData);
+});
+
+app.get("/allProducts/:category/:subcategory/:id", (req, res) => {
+  const { category, subcategory, id } = req.params;
+ const catKey = category.toLowerCase().trim()
+  const subKey = subcategory.toLowerCase().trim()
+  const keyId = Number(id)
+
+  // validation
+if(!catKey||!subKey||Number.isNaN(keyId))return res.status(401).json({message:"you miss params"})
+
+//find category
+  const findCategorys = storeData.find(({ category }) => category === catKey);
+  if(!findCategorys) return res.status(404).json({message:"did not find the category"});
+
+  //find subcategory
+  const {subcategories}=findCategorys
+  const findsubcat = (subcategories || []).find(({subcategory})=> subcategory === subKey)
+if(!findsubcat) return res.status(404).json({message:"did not find the subcategory"})
+
+//find id
+const {products} = findsubcat;
+const  findId = (products || []).find(({id})=> Number(id) === keyId)
+ if(!findId) return res.status(404).json({message:"did not find id"});
+
+  res.status(200).json(findId);
+ });
+
+
+app.use((req,res,next)=>{
+  res.status(404).json({message:"not found page"})
+})
+
+
+
+app.listen(port, () => {
+  console.log(`runing server on PORT: ${port}`);
+});
