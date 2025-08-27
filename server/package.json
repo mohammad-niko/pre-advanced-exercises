@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./blog/index.js"
+    "dev": "nodemon ./first/express1-homeworks/ex3.js"
   },
   "keywords": [],
   "author": "",
