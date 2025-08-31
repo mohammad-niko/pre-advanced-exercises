@@ -7,7 +7,7 @@ let products = [
 ];
 
 let currentId = products.length ? Math.max(...products.map((p) => p.id)) : 0;
-console.log(currentId);
+
 const nextId = () => ++currentId;
 
 // Get all products

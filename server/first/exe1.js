@@ -225,3 +225,68 @@
 // });
 
 // ======================================================================================================================
+
+
+// const articale = {
+//     "nomonah":{
+//         "name":{"title":"string"},
+//         "lastName" : {"title":"string"},
+//         "age":{"title":"number"}
+//     }
+// }
+
+// import mongoose from "mongoose";
+// const {Schema,model} = mongoose;
+
+// const  userSchema = new Schema({
+//     title :{type:String,required:true,min:5},
+//     content:{type:String,required:true},
+//     author:{type:String,required:true},
+//     tags:{type:[String]},
+//     createdAt:{type:String,default:Date.now}
+// });
+
+// export default model("User",userSchema)
+
+// ======================================================================================================================
+
+
+
+// import mongoose from "mongoose";
+// const {connect} = mongoose;
+
+
+
+// const  connectDB = async ()=>{
+//     try {
+//         await connect(process.env.MONGO_URI)
+//         console.log("mongoDB connected ...✅");
+//     } catch (error) {
+//         console.log("mongo not connect ❌:" + error.message);
+//         process.exit(1)
+//     }
+// }
+
+// export default connectDB
+
+
+
+
+
+// import mongoose from "mongoose";
+// const { Schema, model } = mongoose;
+
+// const productSchema = new Schema({
+//   name: { type: String, required: true },
+//   description: { type: String, required: true },
+//   price: { type: Number, required: true, min: 1 },
+//   inventory: { type: Boolean, required: true },
+//   img: { type: String, required: true },
+//   seler: { type: String, required: true },
+// });
+
+// const pro =  model("products", productSchema);
+
+
+// export default pro;
+// ======================================================================================================================
