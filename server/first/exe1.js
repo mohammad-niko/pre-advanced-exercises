@@ -290,3 +290,11 @@
 
 // export default pro;
 // ======================================================================================================================
+
+async function harchi() {
+    try {
+        await productsfind().selecte("title createAt").limit(5).populear("UserId","email")
+    } catch (error) {
+        console.log(error);
+    }
+}
