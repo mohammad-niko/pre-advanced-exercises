@@ -1,4 +1,5 @@
 import "./App.css";
+import GalleryCard from "./GalleryCard";
 
 const data = [
   {
@@ -33,7 +34,11 @@ function App() {
       <h1 className="heading">
         Image Gallery with <span className="highlight">React.js</span>
       </h1>
-      <section className="gallery"></section>
+      <section className="gallery">
+        {data.map(item=>{
+         return <GalleryCard key={item.src} data={item} />
+        })}
+      </section>
     </main>
   );
 }

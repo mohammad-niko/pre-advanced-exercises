@@ -93,3 +93,97 @@ import { useEffect, useState } from "react";
 //     </>
 //   );
 // }
+
+// function Alert({ text }) {
+//   return (
+//     <div className="alert alert-danger" role="alert">
+//       {text}
+//     </div>
+
+//   );
+// }
+
+// export default Alert;
+
+// function Card({ info }) {
+//   const { image, cardTitle, cardDescription, button } = info;
+//   return (
+//     <>
+//       <div className="card m-5">
+//         <img className="card-img-top" src={image} alt="Card image cap" />
+//         <div className="card-body">
+//           <h5 className="card-title">{cardTitle}</h5>
+//           <p className="card-text">
+//             {cardDescription}
+//           </p>
+//           <a href={button.url} className="btn btn-primary">
+//             {button.label}
+//           </a>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
+
+// export default Card;
+
+// function RenderList({arrayOfList}) {
+
+// function randomKey() {
+//     return Math.floor(Math.random() * 1000)
+// }
+
+//   return (
+//    <ul>
+//     {arrayOfList.map(item=><li key={randomKey()}>{item.label}</li>)}
+//    </ul>
+//   )
+// }
+
+// export default RenderList
+
+// function ShowPlanets({arrayOfPlanets}) {
+//    function randomKey() {
+//     return Math.floor(Math.random() * 1000)
+// }
+//   return (
+//     <ul>
+//       {arrayOfPlanets.map(item=><li key={randomKey()}>{item}</li>)}
+//     </ul>
+//   )
+// }
+
+// export default ShowPlanets
+
+// function PokeCard({ data }) {
+//   const { id, name, type, image } = data;
+//   return (
+//     <div key={id} className="my-card">
+//       <h2 className="my-card-title">{name}</h2>
+//       <img src={image} alt="pokemen image" />
+//       <h4>type:{type}</h4>
+//     </div>
+//   );
+// }
+
+// function Pokedex({ data }) {
+//   return (
+//   <div className="container">
+//       {data.map((item) => (
+//         <PokeCard data={item} />
+//       ))}
+//     </div>
+//   );
+// }
+
+// export default Pokedex;
+
+export function CustomerInformation({data}) {
+  const {first_name:fname,last_name:lname} = data
+  return (
+    <div>
+      <h1>My name is {fname}</h1>
+      <h2>My last name is {lname}</h2>
+    </div>
+  );
+}
