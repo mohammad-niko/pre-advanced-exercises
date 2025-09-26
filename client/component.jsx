@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 // function MyButton({ onClick, count }) {
 //   return <button onClick={onClick}>Clicked {count} times</button>;
@@ -178,12 +178,48 @@ import { useEffect, useState } from "react";
 
 // export default Pokedex;
 
-export function CustomerInformation({data}) {
-  const {first_name:fname,last_name:lname} = data
+// export function CustomerInformation({data}) {
+//   const {first_name:fname,last_name:lname} = data
+//   return (
+//     <div>
+//       <h1>My name is {fname}</h1>
+//       <h2>My last name is {lname}</h2>
+//     </div>
+//   );
+// }
+
+export function Shop() {
+  const [money, setMoney] = useState(0);
+
+  // با useCallback میگیم فقط وقتی دوباره بسازش که money تغییر کنه
+  const earnMoney = useCallback(() => {
+    console.log("mmad");
+    setMoney(money + 1);
+  }, [money]);
+
   return (
     <div>
-      <h1>My name is {fname}</h1>
-      <h2>My last name is {lname}</h2>
+      <p>پول: {money} تومان</p>
+      <button onClick={earnMoney}>کار کن و پول دربیار</button>
+    </div>
+  );
+}
+
+export function Shopp() {
+  const [money, setMoney] = useState(0);
+
+  // با useCallback میگیم فقط وقتی دوباره بسازش که money تغییر کنه
+  const earnMoney = () => {
+    
+    setMoney(money + 1);
+    console.log(money);
+  };
+
+
+  return (
+    <div>
+      <p>پول: {money} تومان</p>
+      <button onClick={earnMoney}>کار کن و پول دربیار</button>
     </div>
   );
 }
