@@ -188,38 +188,57 @@ import { useCallback, useEffect, useState } from "react";
 //   );
 // }
 
-export function Shop() {
-  const [money, setMoney] = useState(0);
+// export function Shop() {
+//   const [money, setMoney] = useState(0);
 
-  // با useCallback میگیم فقط وقتی دوباره بسازش که money تغییر کنه
-  const earnMoney = useCallback(() => {
-    console.log("mmad");
-    setMoney(money + 1);
-  }, [money]);
+//   // با useCallback میگیم فقط وقتی دوباره بسازش که money تغییر کنه
+//   const earnMoney = useCallback(() => {
+//     console.log("mmad");
+//     setMoney(money + 1);
+//   }, [money]);
 
-  return (
-    <div>
-      <p>پول: {money} تومان</p>
-      <button onClick={earnMoney}>کار کن و پول دربیار</button>
-    </div>
-  );
+//   return (
+//     <div>
+//       <p>پول: {money} تومان</p>
+//       <button onClick={earnMoney}>کار کن و پول دربیار</button>
+//     </div>
+//   );
+// }
+
+// export function Shopp() {
+//   const [money, setMoney] = useState(0);
+
+//   // با useCallback میگیم فقط وقتی دوباره بسازش که money تغییر کنه
+//   const earnMoney = () => {
+
+//     setMoney(money + 1);
+//     console.log(money);
+//   };
+
+//   return (
+//     <div>
+//       <p>پول: {money} تومان</p>
+//       <button onClick={earnMoney}>کار کن و پول دربیار</button>
+//     </div>
+//   );
+// }
+
+function Greeting({ name }) {
+  const greetings = [
+    `Hello,HOW ARE YOU!`,
+    `Hi, ${name}.`,
+    `Hey ${name}, good to see you!`,
+    `Welcome back, ${name}.`,
+    `Nice to see you again, ${name}!`,
+    `How’s it going?`,
+    `What’s up, ${name}?`,
+    `Good day.`,
+    `Long time no see, ${name}!`,
+    `Glad you’re here, ${name}.`,
+    `Yo, ${name}!`,
+    `Hey there, ${name}.`,
+  ];
+
+  return <h1>{greetings[Math.floor(Math.random() * greting.length)]}</h1>;
 }
-
-export function Shopp() {
-  const [money, setMoney] = useState(0);
-
-  // با useCallback میگیم فقط وقتی دوباره بسازش که money تغییر کنه
-  const earnMoney = () => {
-    
-    setMoney(money + 1);
-    console.log(money);
-  };
-
-
-  return (
-    <div>
-      <p>پول: {money} تومان</p>
-      <button onClick={earnMoney}>کار کن و پول دربیار</button>
-    </div>
-  );
-}
+export default Greeting;
