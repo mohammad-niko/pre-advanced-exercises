@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 
 // function MyButton({ onClick, count }) {
 //   return <button onClick={onClick}>Clicked {count} times</button>;
@@ -223,22 +229,92 @@ import { useCallback, useEffect, useState } from "react";
 //   );
 // }
 
-function Greeting({ name }) {
-  const greetings = [
-    `Hello,HOW ARE YOU!`,
-    `Hi, ${name}.`,
-    `Hey ${name}, good to see you!`,
-    `Welcome back, ${name}.`,
-    `Nice to see you again, ${name}!`,
-    `How’s it going?`,
-    `What’s up, ${name}?`,
-    `Good day.`,
-    `Long time no see, ${name}!`,
-    `Glad you’re here, ${name}.`,
-    `Yo, ${name}!`,
-    `Hey there, ${name}.`,
-  ];
+// function Greeting({ name }) {
+//   const greetings = [
+//     `Hello,HOW ARE YOU!`,
+//     `Hi, ${name}.`,
+//     `Hey ${name}, good to see you!`,
+//     `Welcome back, ${name}.`,
+//     `Nice to see you again, ${name}!`,
+//     `How’s it going?`,
+//     `What’s up, ${name}?`,
+//     `Good day.`,
+//     `Long time no see, ${name}!`,
+//     `Glad you’re here, ${name}.`,
+//     `Yo, ${name}!`,
+//     `Hey there, ${name}.`,
+//   ];
 
-  return <h1>{greetings[Math.floor(Math.random() * greting.length)]}</h1>;
-}
-export default Greeting;
+//   return <h1>{greetings[Math.floor(Math.random() * greting.length)]}</h1>;
+// }
+// export default Greeting;
+
+// const initialstate = { count: 0 };
+
+// function reducer(state, action) {
+//   switch (action.type) {
+//     case "increment":
+//       return { count: state.count + 1 };
+//     case "decrement":
+//       return { count: state.count - 1 };
+//     case "reset":
+//       return { count: 0 };
+//     default:
+//       return state;
+//   }
+// }
+
+// function Counter() {
+//   const [state, dispatch] = useReducer(reducer, initialstate);
+//   console.log(state);
+//   return (
+//     <>
+//       <h1>{state.count}</h1>
+//       <button onClick={() => dispatch({ type: "increment" })}>+</button>
+//       <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+//       <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
+//     </>
+//   );
+// }
+// export default Counter;
+
+// const initialstate = { name: "mohammad", age: 20 };
+
+// function userReduser(state, action) {
+//   switch (action.type) {
+//     case "incremented_age":
+//       return { name: state.name, age: state.age + 1 };
+//     case "change_name":
+//       return {
+//         name: action.nextName,
+//         age: state.age,
+//       };
+//   }
+//   throw Error("Unknown error : " + action.type);
+// }
+
+// export function UserFild() {
+//   const [state, dispatch] = useReducer(userReduser, initialstate);
+//   function handleIncrementedAge() {
+//     dispatch({ type: "incremented_age" });
+//   }
+
+//   function handleChangName(e) {
+//     dispatch({
+//       type: "change_name",
+//       nextName: e.target.value  ? e.target.value  :state.name,
+//     });
+//   }
+
+//   return (
+//     <>
+//       <h1>
+//         your name is {state.name} and you are {state.age} yers old{" "}
+//       </h1>
+
+//       <button onClick={handleIncrementedAge}>Increment age</button>
+
+//       <input type="text" onClick={handleChangName} placeholder="change name" />
+//     </>
+//   );
+// }
