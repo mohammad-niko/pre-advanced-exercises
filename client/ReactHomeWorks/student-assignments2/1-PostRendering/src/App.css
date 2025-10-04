@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.preant {
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.loding {
+  position: absolute;
+  left: 650px;
+  top: 300px;
+  text-align: center;
+  font-size: 50px;
+}
+.error {
+  position: absolute;
+  left: 605px;
+  top: 300px;
+  text-align: center;
+  font-size: 50px;
+}
