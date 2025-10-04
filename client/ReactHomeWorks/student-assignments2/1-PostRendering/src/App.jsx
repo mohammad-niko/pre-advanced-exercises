@@ -5,8 +5,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Card, fetchData } from "./Components";
 
 function App() {
-  const [data, setData] = useState(false);
-  const [isLoading, setIslsLoading] = useState(null);
+  const [data, setData] = useState(null);
+  const [isLoading, setIslsLoading] = useState(false);
 
   useEffect(() => {
     const fetchPosts = async () => {
