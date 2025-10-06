@@ -278,43 +278,43 @@ import {
 // }
 // export default Counter;
 
-// const initialstate = { name: "mohammad", age: 20 };
+const initialstate = { name: "mohammad", age: 20 };
 
-// function userReduser(state, action) {
-//   switch (action.type) {
-//     case "incremented_age":
-//       return { name: state.name, age: state.age + 1 };
-//     case "change_name":
-//       return {
-//         name: action.nextName,
-//         age: state.age,
-//       };
-//   }
-//   throw Error("Unknown error : " + action.type);
-// }
+function userReduser(state, action) {
+  switch (action.type) {
+    case "incremented_age":
+      return { name: state.name, age: state.age + 1 };
+    case "change_name":
+      return {
+        name: action.nextName,
+        age: state.age,
+      };
+  }
+  throw Error("Unknown error : " + action.type);
+}
 
-// export function UserFild() {
-//   const [state, dispatch] = useReducer(userReduser, initialstate);
-//   function handleIncrementedAge() {
-//     dispatch({ type: "incremented_age" });
-//   }
+export function UserFild() {
+  const [state, dispatch] = useReducer(userReduser, initialstate);
+  function handleIncrementedAge() {
+    dispatch({ type: "incremented_age" });
+  }
 
-//   function handleChangName(e) {
-//     dispatch({
-//       type: "change_name",
-//       nextName: e.target.value  ? e.target.value  :state.name,
-//     });
-//   }
+  function handleChangName(e) {
+    dispatch({
+      type: "change_name",
+      nextName: e.target.value  ? e.target.value  :state.name,
+    });
+  }
 
-//   return (
-//     <>
-//       <h1>
-//         your name is {state.name} and you are {state.age} yers old{" "}
-//       </h1>
+  return (
+    <>
+      <h1>
+        your name is {state.name} and you are {state.age} yers old{" "}
+      </h1>
 
-//       <button onClick={handleIncrementedAge}>Increment age</button>
+      <button onClick={handleIncrementedAge}>Increment age</button>
 
-//       <input type="text" onClick={handleChangName} placeholder="change name" />
-//     </>
-//   );
-// }
+      <input type="text" onClick={handleChangName} placeholder="change name" />
+    </>
+  );
+}
