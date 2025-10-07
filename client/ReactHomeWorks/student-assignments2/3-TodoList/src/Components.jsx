@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { fetchData } from "./fetchData";
 
 const initialState = [];
@@ -25,23 +25,36 @@ function taskReducer(state, action) {
 export function Main() {
   const [state, dispatch] = useReducer(taskReducer, initialState);
   const [taskInput, setTaskinput] = useState("");
+  const inpurRef = useRef(null)
+
 
   useEffect(() => {
+    let isMounted = true;
+
+    if(inpurRef.current){
+      inpurRef.current.focus()
+    }
+
     async function getData() {
       try {
         const get = await fetchData();
 
         if (!get) throw new Error("Can't get data: 404");
 
-        dispatch({
-          type: "set-all",
-          payload: get,
-        });
+        if (isMounted) {
+          dispatch({
+            type: "set-all",
+            payload: get,
+          });
+        }
       } catch (error) {
         console.log("can't get data: " + error);
       }
     }
     getData();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   function handleClickInput(e) {
@@ -78,6 +91,7 @@ export function Main() {
           onChange={handleClickInput}
           value={taskInput}
           onKeyDown={(e) => e.key === "Enter" && handleAddNewTask()}
+          ref={inpurRef}
         />
         <button className="btn btn-primary" onClick={handleAddNewTask}>
           Add
