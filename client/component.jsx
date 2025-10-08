@@ -278,43 +278,103 @@ import {
 // }
 // export default Counter;
 
-const initialstate = { name: "mohammad", age: 20 };
+// const initialstate = { name: "mohammad", age: 20 };
 
-function userReduser(state, action) {
-  switch (action.type) {
-    case "incremented_age":
-      return { name: state.name, age: state.age + 1 };
-    case "change_name":
-      return {
-        name: action.nextName,
-        age: state.age,
-      };
-  }
-  throw Error("Unknown error : " + action.type);
-}
+// function userReduser(state, action) {
+//   switch (action.type) {
+//     case "incremented_age":
+//       return { name: state.name, age: state.age + 1 };
+//     case "change_name":
+//       return {
+//         name: action.nextName,
+//         age: state.age,
+//       };
+//   }
+//   throw Error("Unknown error : " + action.type);
+// }
 
-export function UserFild() {
-  const [state, dispatch] = useReducer(userReduser, initialstate);
-  function handleIncrementedAge() {
-    dispatch({ type: "incremented_age" });
-  }
+// export function UserFild() {
+//   const [state, dispatch] = useReducer(userReduser, initialstate);
+//   function handleIncrementedAge() {
+//     dispatch({ type: "incremented_age" });
+//   }
 
-  function handleChangName(e) {
-    dispatch({
-      type: "change_name",
-      nextName: e.target.value  ? e.target.value  :state.name,
-    });
-  }
+//   function handleChangName(e) {
+//     dispatch({
+//       type: "change_name",
+//       nextName: e.target.value  ? e.target.value  :state.name,
+//     });
+//   }
 
-  return (
-    <>
-      <h1>
-        your name is {state.name} and you are {state.age} yers old{" "}
-      </h1>
+//   return (
+//     <>
+//       <h1>
+//         your name is {state.name} and you are {state.age} yers old{" "}
+//       </h1>
 
-      <button onClick={handleIncrementedAge}>Increment age</button>
+//       <button onClick={handleIncrementedAge}>Increment age</button>
 
-      <input type="text" onClick={handleChangName} placeholder="change name" />
-    </>
-  );
+//       <input type="text" onClick={handleChangName} placeholder="change name" />
+//     </>
+//   );
+// }
+
+// export default function TextExample() {
+//   const context = useContext(mmadcontext)
+//   const {messages, setMessages} = context;
+//   console.log(context);
+//   const [input, setinput] = useState(""); //store message form input
+//   const ref = useRef();
+
+//   function addMessage() {
+//     setMessages((prev) => [...prev, input]);
+//     console.log(messages);
+//   }
+
+//   useEffect(() => {
+//     if (ref.current) {
+//       ref.current.scrollTop = ref.current.scrollHeight;
+//     }
+//   }, [messages]);
+//   return (
+//     <div>
+//       <input
+//         type="text"
+//         placeholder="message"
+//         value={input}
+//         onChange={(e) => setinput(e.target.value)}
+//         onKeyDown={(e) => {
+//           if (e.key === "Enter") {
+//             addMessage();
+//             setinput("");
+//           }
+//         }}
+//       />
+//       <div
+//         ref={ref}
+//         style={{
+//           height: 100,
+//           overflow: "auto",
+//           border: "1px solid black",
+//         }}
+//       >
+//         {messages?.map((m, i) => (
+//           <p key={i}>{m}</p>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+export function withRandomColor(WrappedComponent) {
+  return function ColoredComponent(props) {
+    const colors = ["red", "green", "blue", "purple"];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    return (
+      <div style={{ color:  color  }}>
+        <WrappedComponent {...props} />
+      </div>
+    );
+  };
 }
