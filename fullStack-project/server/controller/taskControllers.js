@@ -14,7 +14,7 @@ export const getAllTask = async (req, res) => {
     if (!allTask)
       return res.status(404).json({ message: "no task found for this user" });
 
-    res.status(200).josn(allTask);
+    res.status(200).json(allTask);
   } catch (error) {
     console.log(`error in getting all task ${error}`);
     res.status(500).json({ message: "error in getting all task" });
@@ -24,7 +24,7 @@ export const getAllTask = async (req, res) => {
 export const createTask = async (req, res) => {
   try {
     const { userId } = req.params;
-    const { description, completed } = req.body;
+    const { description, isCompleted } = req.body;
 
     //validation:
     const haveUser = await userModel.findById(userId);
@@ -33,7 +33,7 @@ export const createTask = async (req, res) => {
 
     const newTask = await taskModel.create({
       description,
-      completed,
+      isCompleted,
       user_ID: userId,
     });
     res
@@ -48,8 +48,8 @@ export const createTask = async (req, res) => {
 export const editTask = async (req, res) => {
   try {
     const { userId, taskId } = req.params;
-    const { description, completed } = req.body;
-
+    const { description, isCompleted } = req.body;
+    console.log(isCompleted);
     //validation:
     const haveUser = await userModel.findById(userId);
     if (!haveUser)
@@ -58,13 +58,15 @@ export const editTask = async (req, res) => {
     const upDatedTask = await taskModel.findOneAndUpdate(
       {
         _id: taskId,
-        description: description || haveUser.description,
-        completed: completed || haveUser.completed,
         user_ID: userId,
+      },
+      {
+        description: description ?? haveUser.description,
+        isCompleted: isCompleted ?? haveUser.isCompleted,
       },
       { new: true }
     );
-
+console.log(upDatedTask);
     res
       .status(200)
       .json({ message: "task updated successfully", task: upDatedTask });
@@ -76,6 +78,7 @@ export const editTask = async (req, res) => {
 
 export const deleteTask = async (req, res) => {
   try {
+    console.log(req.params);
     const { userId, taskId } = req.params;
     //validation:
     const haveUser = await userModel.findById(userId);
@@ -92,6 +95,6 @@ export const deleteTask = async (req, res) => {
       .json({ message: "task deleted successfully", task: deletedTask });
   } catch (error) {
     console.log(`error in deleting task ${error}`);
-    req.status(500).json({ message: "error in deleting task", error: error });
+    res.status(500).json({ message: "error in deleting task", error: error });
   }
 };
