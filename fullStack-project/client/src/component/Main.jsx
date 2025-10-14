@@ -21,9 +21,9 @@ function Main() {
           isCompleted: false,
           user_ID: "68e66650845538b847e773fe",
         });
+        setNewTask("");
       }
-      e.target.value = "";
-      setNewTask("");
+      
     } catch (error) {
       console.log(`error in handleOnKeyDown: ${error}`);
     }
