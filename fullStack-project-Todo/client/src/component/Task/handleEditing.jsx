@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { taskContext } from "../TaskContext/taskContext";
 import { deleteTask, TaskComplet } from "../Fetch/fetchData";
+import { useDispatch } from "react-redux";
+import { DELETEAction, TOGGLEAction } from "../../Redux/actions/taskActions";
 
 export function IsEdit() {
   return (
@@ -14,7 +16,8 @@ export function IsEdit() {
 }
 
 export function IsNotEdit({ data }) {
-  const { state, dispatch } = useContext(taskContext);
+
+  const dispatch = useDispatch();
   const { description, isCompleted, _id, user_ID } = data;
 
   async function hendleOClickComplet() {
@@ -25,20 +28,16 @@ export function IsNotEdit({ data }) {
         isCompleted: !isCompleted,
       });
 
-      dispatch({
-        type: "toggle",
-        payload: data,
-      });
+      dispatch(TOGGLEAction(_id));
     } catch (error) {
       console.log(`error in hendle: ${error}`);
     }
   }
 
   async function handleRemoveTask() {
-    console.log(_id, user_ID);
     try {
       await deleteTask(_id, user_ID);
-      dispatch({ type: "delete", payload: _id });
+      dispatch(DELETEAction(_id));
     } catch (error) {
       console.log(`error in handleRemoveTask: ${error}`);
     }

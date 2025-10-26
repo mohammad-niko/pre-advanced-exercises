@@ -1,4 +1,4 @@
-import { Children } from "react";
+import { useDispatch } from "react-redux";
 
 export const getTasks = async (user_ID) => {
   const URL = `http://localhost:5000/api/user/${user_ID}/task`;
@@ -19,20 +19,22 @@ export const getTasks = async (user_ID) => {
 };
 
 export const postTask = async ({ description, isCompleted, user_ID }) => {
-  console.log({ description, isCompleted, user_ID });
   const URL = `http://localhost:5000/api/user/${user_ID}/task`;
+
   try {
     const post = await fetch(URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ description, isCompleted, user_ID }),
     });
-
     if (post.status === 404) throw new Error("not found");
     if (post.status === 500) throw new Error("server error");
     if (!post.ok) throw new Error("can't post task");
 
+    const res = await post.json();
+
     alert("task added successfully✅");
+    return res.task;
   } catch (error) {
     console.log(`can't post task error: ${error}`);
   }
@@ -41,22 +43,21 @@ export const postTask = async ({ description, isCompleted, user_ID }) => {
 export const TaskComplet = async ({ _id, isCompleted, user_ID }) => {
   const URL = `http://localhost:5000/api/user/${user_ID}/task/${_id}`;
   try {
-    const edit = await fetch(URL, {
+    const Put = await fetch(URL, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ isCompleted }),
     });
 
-    if (edit.status === 404) throw new Error("not found");
-    if (edit.status === 500) throw new Error("server error");
-    if (!edit.ok) throw new Error("can't edit the task");
-    console.log(edit);
+    if (Put.status === 404) throw new Error("not found");
+    if (Put.status === 500) throw new Error("server error");
+    if (!Put.ok) throw new Error("can't edit the task");
   } catch (error) {
-    console.log(`can't edit the task error: ${error}`);
+    console.log(`can't Put the task error: ${error}`);
   }
 };
 
-export const deleteTask = async ( _id, user_ID ) => {
+export const deleteTask = async (_id, user_ID) => {
   const URL = `http://localhost:5000/api/user/${user_ID}/task/${_id}`;
   try {
     const del = await fetch(URL, {

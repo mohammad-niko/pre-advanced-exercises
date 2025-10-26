@@ -1,29 +1,31 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Task from "./Task/Task";
-import { taskContext } from "./TaskContext/taskContext";
 import { getTasks, postTask } from "./Fetch/fetchData";
+import { useDispatch, useSelector } from "react-redux";
+import { ADDAction, SETALLAction } from "../Redux/actions/taskActions";
 
 function Main() {
-  const { state, dispatch } = useContext(taskContext);
   const [newTask, setNewTask] = useState("");
-  const [tasks, setTasks] = useState([]);
+
   const inputRef = useRef(null);
+  const dispatch = useDispatch();
+  const tasksFromStore = useSelector((store) => store.tasks);
 
   async function handleOnKeyDown(e) {
     try {
       if (e.target.value.trim() === "") return;
       if (e.key === "Enter") {
-        dispatch({ type: "add", payload: e.target.value });
-
         // post to the server
-        await postTask({
+        const data = await postTask({
           description: e.target.value,
           isCompleted: false,
           user_ID: "68e66650845538b847e773fe",
         });
+
+        dispatch(ADDAction(data));
+
         setNewTask("");
       }
-      
     } catch (error) {
       console.log(`error in handleOnKeyDown: ${error}`);
     }
@@ -32,14 +34,13 @@ function Main() {
   async function handleOnChange() {
     try {
       if (newTask.trim() === "") return;
-      dispatch({ type: "add", payload: newTask });
-
       // post to the server
-      await postTask({
+      const data = await postTask({
         description: newTask,
         isCompleted: false,
         user_ID: "68e66650845538b847e773fe",
       });
+      dispatch(ADDAction(data));
       setNewTask("");
     } catch (error) {
       console.log(`error in handleOnChange: ${error}`);
@@ -54,15 +55,13 @@ function Main() {
     async function fetch() {
       try {
         const data = await getTasks("68e66650845538b847e773fe");
-
-        setTasks(data);
+        dispatch(SETALLAction(data));
       } catch (error) {
         console.log(error);
       }
     }
     fetch();
-  }, [state, newTask]);
-  // console.log(tasks);
+  }, []);
   return (
     <main className="main">
       <div className="container">
@@ -81,9 +80,10 @@ function Main() {
           </button>
         </div>
         <ul className="task-container">
-          {tasks.map((item) => {
-            return <Task key={item._id} taskData={item} />;
-          })}
+          {tasksFromStore &&
+            tasksFromStore.map((item) => {
+              return <Task key={item._id} taskData={item} />;
+            })}
         </ul>
       </div>
     </main>

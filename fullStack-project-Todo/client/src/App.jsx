@@ -5,19 +5,21 @@ import "./App.css";
 import { useReducer } from "react";
 import Header from "./component/Header";
 import Main from "./component/Main";
-import { initialstate, taskReducer } from "./component/TaskReducer/reducer";
-import { taskContext } from "./component/TaskContext/taskContext";
-
-
+// use useContaxt and useReduser
+// import { initialstate, taskReducer } from "./component/TaskReducer/reducer";
+// import { taskContext } from "./component/TaskContext/taskContext";
+//use Redux
+import { Provider } from "react-redux";
+import { store } from "./Redux/store";
 
 function App() {
-  const [state,dispatch] = useReducer(taskReducer, initialstate);
+  // const [state,dispatch] = useReducer(taskReducer, initialstate);
   return (
     <>
       <Header />
-      <taskContext.Provider value={{state,dispatch}}>
-      <Main />
-      </taskContext.Provider>
+      <Provider store={store}>
+        <Main />
+      </Provider>
     </>
   );
 }
