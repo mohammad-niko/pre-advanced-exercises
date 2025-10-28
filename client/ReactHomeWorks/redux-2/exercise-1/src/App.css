@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+    padding: 80px;
+  width: 700px;
+  height: 500px;
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+gap: 100px;
+
+}
+ 
+/* .pareant-of-h1{
+    display: inline;
+} */
+
+
+h1{
+    font-size: 3rem;
+}
+
+
+.pareant-of-btns{
+ width: 100%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 70px;
+} 
+
