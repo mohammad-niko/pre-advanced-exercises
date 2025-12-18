@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc mmad.ts",
-    "start": "node --watch mmad.js"
+    "dev": "tsc pick.ts",
+    "start": "node --watch pick.js"
   },
   "author": "",
   "license": "ISC",
