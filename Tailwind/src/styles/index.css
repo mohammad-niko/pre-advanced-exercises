@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme{
+  --color-UserCard:rgba(64, 130, 224);
+  --color-RevenusCard:rgba(88, 177, 139);
+  --color-OrderCard:rgba(241, 159, 78);
+  --color-TicketCard:rgba(224, 96, 83);
+}
+
+
+@layer components {
+  .center-flex {
+    @apply flex justify-center items-center;
+  }
+}
