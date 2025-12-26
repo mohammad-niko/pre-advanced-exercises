@@ -30,3 +30,15 @@ var user = {
 console.log(user);
 console.log(movie);
 console.log(message.paid);
+var mmad = {
+    title: "ahmad",
+    price: 100,
+};
+function printId(value) {
+    console.log(value.id);
+}
+printId({ id: 1, name: "Ali" });
+function printName(value) {
+    console.log({ name: "mohmamd", age: 30 });
+    console.log({ age: 30 });
+}
