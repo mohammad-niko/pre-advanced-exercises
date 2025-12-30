@@ -1,4 +1,6 @@
-import { statusColor } from "../../util/statusColor";
+import { statusColor } from "@/util/statusColor";
+import { AddUserDialog } from "./AddUserDialog";
+import UserAction from "./UserAction";
 
 function Table() {
   const tableData = [
@@ -27,43 +29,29 @@ function Table() {
       status: "Inactive",
     },
   ];
-  statusColor("Active");
   return (
     <div>
       <div className="w-full flex justify-between h-10 px-4 py-7.5 items-center bg-[#fefefe] inset-shadow-sm rounded-sm ">
         <span className="font-bold text-lg">Recent User</span>
-        <button className="center-flex bg-sky-600 pl-2 pr-1 py-2 rounded-sm text-white font-bold">
-          Add User
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-3.5 mt-0.5 ml-0.5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m8.25 4.5 7.5 7.5-7.5 7.5"
-            />
-          </svg>
-        </button>
+        <AddUserDialog />
       </div>
-
-      <table className="w-full bg-[rgba(254,254,254)] border-separate ">
+      <table className="w-full bg-[rgba(254,254,254)] ">
         <thead className="bg-[#f3f3f6]">
           <tr>
             <th className="text-left px-4 py-2">Name</th>
             <th className="text-left px-4 py-2">Email</th>
             <th className="text-left px-4 py-2">Role</th>
             <th className="text-left px-4 py-2">Status</th>
+            <th className="text-left px-2 py-1"></th>
           </tr>
         </thead>
         <tbody>
           {tableData &&
             tableData.map(({ name, email, role, status }) => (
-              <tr key={email} className="bg-[#fefefe] inset-shadow-sm rounded-sm">
+              <tr
+                key={email}
+                className="bg-[#fefefe] inset-shadow-sm rounded-sm"
+              >
                 <th className="text-left py-2 px-4">{name}</th>
                 <td className="text-left py-2 px-4">{email}</td>
                 <td className="text-left py-2 px-4">{role}</td>
@@ -75,6 +63,9 @@ function Table() {
                   >
                     {status}
                   </span>
+                </td>
+                <td className="flex justify-end py-2 px-4">
+                  <UserAction status={status} />
                 </td>
               </tr>
             ))}

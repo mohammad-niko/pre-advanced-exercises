@@ -1,5 +1,6 @@
 import Cards from "./common/Cards";
 import Table from "./common/Table";
+import { Button } from "@/components/ui/button";
 
 function Main() {
   const cardsData = [
@@ -102,9 +103,9 @@ function Main() {
         <Table />
       </div>
       <div className="my-15 flex justify-center">
-        <button className="p-3 bg-sky-600 text-white rounded-sm">
+        <Button variant="outline">
           Open Modle
-        </button>
+        </Button>
       </div>
     </div>
   );
