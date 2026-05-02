@@ -1,9 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function greet(person, date) {
     console.log(`Hello ${person}, today is ${date}!`);
     return person;
 }
 function printName(obj) {
-    return obj.name + (obj === null || obj === void 0 ? void 0 : obj.last);
+    return obj.name + obj?.last;
 }
 printName({ name: "mmad", last: "nik" });
 printName({ name: "ali" });
@@ -41,4 +43,3 @@ function getArea(shape) {
         return shape.sideLength ** 2;
     }
 }
-export {};

@@ -1,10 +1,10 @@
-function last<T>(arr: T[]): T {
-  return arr[arr.length - 1];
-}
+// function last<T>(arr: T[]): T {
+//   return arr[arr.length - 1];
+// }
 
-const n = last([1, 2, 3, 4, 5, 6]);
-const m = last(["mmad", "ali", "mmadAli"]);
-const l = last([true, false, true, true]);
+// const n = last([1, 2, 3, 4, 5, 6]);
+// const m = last(["mmad", "ali", "mmadAli"]);
+// const l = last([true, false, true, true]);
 
 // console.log(n+100);
 // console.log(m+"ohammad");

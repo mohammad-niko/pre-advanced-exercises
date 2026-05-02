@@ -7,6 +7,7 @@ function handle(value) {
     else if (typeof value === "boolean") {
         return value ? "yes" : "no";
     }
+    return undefined;
 }
 const moive = {
     id: 10,

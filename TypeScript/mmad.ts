@@ -6,6 +6,7 @@ function handle(value: Value) {
   } else if (typeof value === "boolean") {
     return value ? "yes" : "no";
   }
+  return undefined
 }
 
 type Moive = {
