@@ -7,8 +7,8 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "commonjs",
-    "target": "es2021",
+    "module": "es2020",
+    "target": "es2023",
     // "allowJs": true,
     // For nodejs:
     // "types": ["esnext"],

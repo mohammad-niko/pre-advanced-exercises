@@ -1,7 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Account = void 0;
 class Car {
+    model;
+    year;
+    price;
     constructor(model, year, price) {
         this.model = model;
         this.year = year;
@@ -18,6 +18,12 @@ const ford = new Car("mostang", 1975, 150000);
 // console.log(ford);
 // console.log(ford instanceof Car);
 class Product {
+    manufactureDate;
+    price;
+    id;
+    quantity;
+    expireDate;
+    isPrime;
     constructor(id, price, quantity, manufactureDate, expireDate, isPrime) {
         this.id = id;
         this.price = price;
@@ -71,6 +77,7 @@ class Product {
 // myAccount.changePassword = 1125
 // // console.log(myAccount.getPassword);
 class Orders {
+    static _ordersCount = 0;
     makeOrder() {
         Orders._ordersCount += 1;
     }
@@ -78,7 +85,6 @@ class Orders {
         return Orders._ordersCount;
     }
 }
-Orders._ordersCount = 0;
 let order1 = new Orders();
 order1.makeOrder();
 let order2 = new Orders();
@@ -116,7 +122,10 @@ class Manager extends Employee {
 }
 const myManager = new Manager();
 myManager.work();
-class Account {
+export class Account {
+    id;
+    owner;
+    balance;
     constructor(id, owner, balance) {
         this.id = id;
         this.owner = owner;
@@ -126,8 +135,8 @@ class Account {
         this.balance -= amount + amount * 0.02;
     }
 }
-exports.Account = Account;
 class BadAccount extends Account {
+    debt;
     constructor(id, owner, balance, debt) {
         super(id, owner, balance);
         this.debt = debt;

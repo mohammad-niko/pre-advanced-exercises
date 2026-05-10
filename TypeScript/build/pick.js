@@ -1,8 +1,6 @@
-"use strict";
 // function last<T>(arr: T[]): T {
 //   return arr[arr.length - 1];
 // }
-Object.defineProperty(exports, "__esModule", { value: true });
 const movie = {
     title: "king",
     price: 100,
@@ -40,3 +38,4 @@ function printName(value) {
     console.log({ age: 30 });
 }
 printName({ name: "ali", id: 5 });
+export {};

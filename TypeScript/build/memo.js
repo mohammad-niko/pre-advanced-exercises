@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 function memoize(fn) {
     const cacheMemory = new Map();
     return function (input) {
@@ -27,3 +25,4 @@ console.log("return: " + memoizedAdd(6)(10));
 console.log("return: " + memoizedAdd(6)(20));
 console.log("return: " + memoizedAdd(6)(30));
 console.log("return: " + memoizedAdd(6)(30));
+export {};

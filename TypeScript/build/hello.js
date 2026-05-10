@@ -1,6 +1,4 @@
-"use strict";
 // const message :string = "hello typescript";
-Object.defineProperty(exports, "__esModule", { value: true });
 // import { ListFormat } from "typescript";
 // import { greeting } from "./welcome";
 //
@@ -452,3 +450,4 @@ console.log(typeof output2);
 function out(m) {
     return m.push("hi");
 }
+export {};

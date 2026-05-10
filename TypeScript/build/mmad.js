@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 function handle(value) {
     if (typeof value === "string") {
         return value.toUpperCase();
@@ -27,3 +25,4 @@ function wrap(value) {
 }
 const gnric = wrap(2566);
 console.log(typeof gnric);
+export {};

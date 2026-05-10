@@ -1,4 +1,4 @@
-import { validateLocaleAndSetLanguage } from "typescript";
+
 
 class Car {
   model: string;
